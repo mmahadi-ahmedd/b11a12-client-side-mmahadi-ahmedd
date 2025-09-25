@@ -5,6 +5,8 @@ import RootLayout from "../Layout/RootLayout";
 import AuthLayout from "../Layout/AuthLayout";
 import Login from "../Pages/Authentication/Login/Login";
 import Register from "../Pages/Authentication/Register/Register";
+import PrivateRoutes from "../Routes/PrivateRoutes";
+import BeCharity from "../Pages/BeCharity/BeCharity";
 
 
 export const router = createBrowserRouter([
@@ -15,6 +17,12 @@ export const router = createBrowserRouter([
         {
             index:true,
             Component:Home
+        },
+        {
+          path:'/beCharity',
+          element:<PrivateRoutes>
+            <BeCharity></BeCharity>
+          </PrivateRoutes>
         }
     ],
   },

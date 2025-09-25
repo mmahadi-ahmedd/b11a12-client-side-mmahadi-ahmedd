@@ -1,5 +1,6 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import { Link } from 'react-router';
 
 const Login = () => {
 
@@ -41,7 +42,8 @@ const Login = () => {
                                             Pass word must be  6 characters minimum.
                                         </p>
                                     }
-                                <div><a className="link link-hover">Forgot password?</a></div>
+                                <div><a className="link link-hover">Don't have an account?</a></div>
+                                <Link to='/register' > Register </Link>
                                
                             </fieldset>
                              <button className="btn btn-neutral mt-4">Login</button>
