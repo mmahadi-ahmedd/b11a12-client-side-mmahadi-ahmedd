@@ -7,6 +7,8 @@ import Login from "../Pages/Authentication/Login/Login";
 import Register from "../Pages/Authentication/Register/Register";
 import PrivateRoutes from "../Routes/PrivateRoutes";
 import BeCharity from "../Pages/BeCharity/BeCharity";
+import DashBoardLayout from "../Layout/DashBoardLayout";
+import CharityProfile from "../Pages/Dashboard/CharityProfile/CharityProfile";
 
 
 export const router = createBrowserRouter([
@@ -40,4 +42,18 @@ export const router = createBrowserRouter([
       }
     ]
   },
+  {
+    path:'/dashboard',
+    element:
+    <PrivateRoutes>
+      <DashBoardLayout></DashBoardLayout>
+    </PrivateRoutes>,
+    children:[
+      {
+        path:'charityProfile',
+        Component:CharityProfile
+      }
+    ]
+    
+  }
 ]);
