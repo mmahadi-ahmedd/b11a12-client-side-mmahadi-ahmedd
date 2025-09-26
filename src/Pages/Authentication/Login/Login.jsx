@@ -1,6 +1,7 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router';
+import SocialLogin from '../SocialLogin/SocialLogin';
 
 const Login = () => {
 
@@ -12,7 +13,7 @@ const Login = () => {
 
 
     return (
-        <div className="hero bg-base-200 min-h-screen">
+        <div className='w-full mx-auto' >
             <form onSubmit={handleSubmit(onSubmit)} >
                 <div className="hero-content flex-col ">
                     <div className="text-center ">
@@ -51,6 +52,9 @@ const Login = () => {
                     </div>
                 </div>
             </form>
+           <div className='w-full mx-auto' >
+             <SocialLogin></SocialLogin>
+           </div>
         </div>
     );
 };

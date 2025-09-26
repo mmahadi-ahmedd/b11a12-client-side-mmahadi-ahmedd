@@ -42,9 +42,10 @@ const Navbar = () => {
 
             <div className="navbar-end">
                 {user ?
-
-                    <button> LogOut </button>
-
+                   <>
+                   {user.email}
+                    <button className='button m-4 px-4 py-2 rounded-full bg-blue-500' > LogOut </button>
+                    </>
 
                     : <Link to="/login" >LogIn</Link>
 
