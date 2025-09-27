@@ -1,12 +1,16 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import useAuth from "../../../hooks/useAuth";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
-const CharityProfile = ({ user }) => {
+const CharityProfile = () => {
   const [charity, setCharity] = useState(null);
+  const {user} = useAuth();
+  const axiosSecure = useAxiosSecure();
 
   useEffect(() => {
     if (user?.email) {
-      axios.get(`http://localhost:5000/api/charity/${user.email}`)
+      axiosSecure.get(`http://localhost:5000/api/charity/${user.email}`)
         .then(res => setCharity(res.data))
         .catch(err => console.error(err));
     }

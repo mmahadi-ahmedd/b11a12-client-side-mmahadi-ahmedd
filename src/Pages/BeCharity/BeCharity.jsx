@@ -2,8 +2,10 @@ import React from 'react';
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import useAxiosSecure from '../../hooks/useAxiosSecure';
+import useAuth from '../../hooks/useAuth';
 
 const BeCharity = () => {
+    const { user } = useAuth();
     const {
         register,
         handleSubmit,
@@ -13,20 +15,28 @@ const BeCharity = () => {
     const axiosSecure = useAxiosSecure();
 
     const onSubmit = async (data) => {
+        const charityData = {
+            name: user?.displayName || data.name,  // 👈 fallback if no displayName
+            email: user?.email || data.email,      // 👈 fallback if no email
+            organizationName: data.organizationName,
+            mission: data.mission,
+            status: "Pending",
+            createdAt: new Date(),
+        };
         try {
             const token = localStorage.getItem("token"); // JWT saved on login
             const res = await axiosSecure.post(
                 "api/charity-requests",
-                data,
+                charityData,
                 {
                     headers: { Authorization: `Bearer ${token}` },
                 }
             );
-            toast.success(res.data.message || "Charity request submitted!");
+            toast.success(res.charityData.message || "Charity request submitted!");
             reset();
         } catch (err) {
             console.error(err);
-            toast.error(err.response?.data?.message || "Failed to submit request");
+            toast.error(err.response?.charityData?.message || "Failed to submit request");
         }
     };
 
@@ -38,6 +48,34 @@ const BeCharity = () => {
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
                 {/* Organization Name */}
                 <div>
+                    {/* 👇 Name (prefilled from user, but editable if needed) */}
+                     <label className="label">
+                        <span className="label-text">Name</span>
+                    </label>
+                    <input
+                        type="text"
+                        defaultValue={user?.displayName || ""}
+                        {...register("name", { required: true })}
+                        placeholder="Your Name"
+                        className="input input-bordered w-full"
+                        readOnly={!!user?.displayName} // make readonly if from auth
+                    />
+
+                    {/* 👇 Email (prefilled from user, but editable if needed) */}
+                     <label className="label">
+                        <span className="label-text">Email</span>
+                    </label>
+                    <input
+                        type="email"
+                        defaultValue={user?.email || ""}
+                        {...register("email", { required: true })}
+                        placeholder="Your Email"
+                        className="input input-bordered w-full"
+                        readOnly={!!user?.email}
+                    />
+
+
+
                     <label className="label">
                         <span className="label-text">Organization Name</span>
                     </label>

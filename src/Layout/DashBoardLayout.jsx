@@ -1,5 +1,5 @@
 import React from 'react';
-import { Outlet } from 'react-router';
+import { NavLink, Outlet } from 'react-router';
 
 const DashBoardLayout = () => {
     return (
@@ -36,8 +36,9 @@ const DashBoardLayout = () => {
                 <label htmlFor="my-drawer-2" aria-label="close sidebar" className="drawer-overlay"></label>
                 <ul className="menu bg-base-200 text-base-content min-h-full w-80 p-4">
                     {/* Sidebar content here */}
-                    <li><a>Sidebar Item s1</a></li>
-                    <li><a>Sidebar Item s2</a></li>
+                    <li><a>Home</a></li>
+                    <li><NavLink to="/dashboard/charityprofile" >Charity Profile</NavLink></li>
+                    <li><NavLink to="/dashboard/charityRequests" >Manage Requests</NavLink></li>
                 </ul>
             </div>
         </div>

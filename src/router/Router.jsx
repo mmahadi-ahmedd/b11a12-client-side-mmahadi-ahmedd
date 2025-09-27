@@ -9,6 +9,7 @@ import PrivateRoutes from "../Routes/PrivateRoutes";
 import BeCharity from "../Pages/BeCharity/BeCharity";
 import DashBoardLayout from "../Layout/DashBoardLayout";
 import CharityProfile from "../Pages/Dashboard/CharityProfile/CharityProfile";
+import CharityRequests from "../Pages/Dashboard/CharityRequests/CharityRequests";
 
 
 export const router = createBrowserRouter([
@@ -52,6 +53,10 @@ export const router = createBrowserRouter([
       {
         path:'charityProfile',
         Component:CharityProfile
+      },
+      {
+        path: 'charityRequests',
+        Component:CharityRequests 
       }
     ]
     
