@@ -95,7 +95,7 @@ const Register = () => {
                                 }
 
                                 {/* File field */}
-                                <label className="label">Your Name</label>
+                                <label className="label">Your Photo</label>
                                 <input type="file"
                                     onChange={handleImageUpload}
                                     className="input" placeholder="Your Profile Picture" />

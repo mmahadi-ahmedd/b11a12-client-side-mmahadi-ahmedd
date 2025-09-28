@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react"; // 👈 import here
 import { toast } from "react-toastify";
-import useAxios from "../../../hooks/useAxios";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 const CharityRequests = () => {
@@ -42,7 +41,7 @@ const CharityRequests = () => {
       <h2 className="text-2xl font-bold mb-4">Manage Charity Requests</h2>
       <table className="table w-full">
         <thead>
-          <tr className="bg-gray-100">
+          <tr className="">
             <th>User</th>
             <th>Email</th>
             <th>Organization</th>

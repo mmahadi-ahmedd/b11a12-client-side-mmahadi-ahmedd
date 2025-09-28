@@ -10,6 +10,11 @@ import BeCharity from "../Pages/BeCharity/BeCharity";
 import DashBoardLayout from "../Layout/DashBoardLayout";
 import CharityProfile from "../Pages/Dashboard/CharityProfile/CharityProfile";
 import CharityRequests from "../Pages/Dashboard/CharityRequests/CharityRequests";
+import ManageUsers from "../Pages/Dashboard/ManageUsers/ManageUsers";
+import AdminProfile from "../Pages/Dashboard/AdminProfile/AdminProfile";
+import RestaurantProfile from "../Pages/Dashboard/RestaurentProfile/RestaurentProfile";
+import AddDonations from "../Pages/Dashboard/AddDonations/AddDonations";
+import MyDonations from "../Pages/Dashboard/MyDonations/MyDonations";
 
 
 export const router = createBrowserRouter([
@@ -50,6 +55,26 @@ export const router = createBrowserRouter([
       <DashBoardLayout></DashBoardLayout>
     </PrivateRoutes>,
     children:[
+      {
+        path:'manageusers',
+        Component:ManageUsers
+      },
+      {
+        path:'adminProfile',
+        Component:AdminProfile
+      },
+      {
+        path:'restaurentProfile',
+        Component:RestaurantProfile
+      },
+      {
+        path:'addDonation',
+        Component:AddDonations
+      },
+      {
+        path:'myDonation',
+        Component:MyDonations
+      },
       {
         path:'charityProfile',
         Component:CharityProfile

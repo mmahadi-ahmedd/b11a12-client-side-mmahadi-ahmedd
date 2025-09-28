@@ -37,8 +37,13 @@ const DashBoardLayout = () => {
                 <ul className="menu bg-base-200 text-base-content min-h-full w-80 p-4">
                     {/* Sidebar content here */}
                     <li><a>Home</a></li>
+                    <li><NavLink to="/dashboard/restaurentProfile" >Restaurent Profile</NavLink></li>
                     <li><NavLink to="/dashboard/charityprofile" >Charity Profile</NavLink></li>
-                    <li><NavLink to="/dashboard/charityRequests" >Manage Requests</NavLink></li>
+                    <li><NavLink to="/dashboard/adminProfile" >Admin Profile</NavLink></li>
+                    <li><NavLink to="/dashboard/manageusers" >Manage Users</NavLink></li>
+                    <li><NavLink to="/dashboard/charityRequests" >Manage Roll Requests</NavLink></li>
+                    <li><NavLink to="/dashboard/addDonation" >Add Donations</NavLink></li>
+                    <li><NavLink to="/dashboard/myDonation" >My Donations</NavLink></li>
                 </ul>
             </div>
         </div>

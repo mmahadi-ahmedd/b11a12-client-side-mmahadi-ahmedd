@@ -10,7 +10,7 @@ const CharityProfile = () => {
 
   useEffect(() => {
     if (user?.email) {
-      axiosSecure.get(`http://localhost:5000/api/charity/${user.email}`)
+      axiosSecure.get(`api/charity/${user.email}`)
         .then(res => setCharity(res.data))
         .catch(err => console.error(err));
     }
@@ -25,7 +25,7 @@ const CharityProfile = () => {
   }
 
   return (
-    <div className="max-w-lg mx-auto p-6 bg-white shadow-md rounded-xl">
+    <div className="max-w-lg mx-auto p-6 shadow-md rounded-xl">
       <div className="flex flex-col items-center">
         <img
           src={charity.logo || "https://via.placeholder.com/100"}
