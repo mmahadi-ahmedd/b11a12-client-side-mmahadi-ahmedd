@@ -15,6 +15,7 @@ import AdminProfile from "../Pages/Dashboard/AdminProfile/AdminProfile";
 import RestaurantProfile from "../Pages/Dashboard/RestaurentProfile/RestaurentProfile";
 import AddDonations from "../Pages/Dashboard/AddDonations/AddDonations";
 import MyDonations from "../Pages/Dashboard/MyDonations/MyDonations";
+import ManageDonations from "../Pages/Dashboard/ManageDonations/ManageDonations";
 
 
 export const router = createBrowserRouter([
@@ -74,6 +75,10 @@ export const router = createBrowserRouter([
       {
         path:'myDonation',
         Component:MyDonations
+      },
+      {
+        path:'manageDonations',
+        Component:ManageDonations
       },
       {
         path:'charityProfile',
