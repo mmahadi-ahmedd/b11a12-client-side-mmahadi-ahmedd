@@ -4,7 +4,7 @@ import React from 'react';
 import PaymentForm from './PaymentForm';
 
 
-const stripePromise = loadStripe('pk_test_6pRNASCoBOKtIshFeQd4XMUh');
+const stripePromise = loadStripe(import.meta.env.VITE_payment_key);
 
 const Payment = () => {
     return (

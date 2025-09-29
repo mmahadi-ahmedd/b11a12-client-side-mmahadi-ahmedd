@@ -1,27 +1,41 @@
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { useParams } from 'react-router';
 import { useQuery } from '@tanstack/react-query'
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
+import useAuth from '../../../hooks/useAuth';
 
 const PaymentForm = () => {
     const stripe = useStripe();
     const elements = useElements();
-    const{reqId} = useParams();
+    const { reqId } = useParams();
+    const [request, setRequest] = useState(null);
+    const [loading, setLoading] = useState(true);
+
     console.log(reqId);
     const [error, setError] = useState('');
     const axiosSecure = useAxiosSecure();
 
-    const {} = useQuery({
-        queryKey:[ 'charityRequests', reqId ],
-        queryFn: async () =>{
+    const { isPending, data: reqInfo = {} } = useQuery({
+        queryKey: ['charityRequests', reqId],
+        queryFn: async () => {
             const res = await axiosSecure.get(`api/charityrequests/${reqId}`);
-            return res.data;    
+            return res.data;
         }
     })
+    if (isPending) {
+        return '...loading'
+    }
 
-    
+    console.log(reqInfo);
+    const amountInCents = 5000;
+    console.log(amountInCents)
+
+
+
+
+
 
 
     const handleSubmit = async (e) => {
@@ -50,7 +64,43 @@ const PaymentForm = () => {
         }
 
 
+        const res = await axiosSecure.post('/create-payment-intent', {
+            amountInCents,
+            reqId
+        })
+
+        const clientSecret = res.data.clientSecret;
+
+
+
+        const result = await stripe.confirmCardPayment(clientSecret, {
+            payment_method: {
+                card: elements.getElement(CardElement),
+                billing_details: {
+                    name: reqInfo.name,
+                    email:reqInfo.email
+                },
+            },
+        });
+
+
+        if (result.error) {
+            console.log(result.error.message);
+        } else {
+            if (result.paymentIntent.status === 'succeeded') {
+                console.log('PAyment Succeeded');
+                console.log(result);
+            }
+        }
+
+
+
+
     }
+
+
+
+
 
 
     return (
