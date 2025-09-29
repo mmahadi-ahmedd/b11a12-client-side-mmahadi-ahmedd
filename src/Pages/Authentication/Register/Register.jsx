@@ -9,7 +9,7 @@ const Register = () => {
 
     const { register, handleSubmit, formState: { errors } } = useForm();
     const { createUser, updateUserProfile } = useAuth();
-    const [profilePic, setProfilePic] = useState('');
+    const [profilePic, setProfilePic] = useState(false);
     const axiosInstance = useAxios();
 
 
@@ -26,6 +26,8 @@ const Register = () => {
 
                     const userInfo = {
                         email: data.email,
+                        name:data.name,
+                        profilePic:profilePic,
                         role: 'user',
                         created_at: new Date().toISOString(),
                         last_log_in: new Date().toISOString()
@@ -124,7 +126,7 @@ const Register = () => {
 
                                 <div><a className="link link-hover">Already have an account?</a></div>
                                 <Link to='/login' > Login </Link>
-                                <button className="btn btn-neutral mt-4">Register</button>
+                                <button className="btn btn-neutral mt-4" disabled={!profilePic} >Register</button>
                             </fieldset>
                         </form>
                         <SocialLogin></SocialLogin>

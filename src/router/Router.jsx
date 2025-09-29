@@ -17,6 +17,7 @@ import AddDonations from "../Pages/Dashboard/AddDonations/AddDonations";
 import MyDonations from "../Pages/Dashboard/MyDonations/MyDonations";
 import ManageDonations from "../Pages/Dashboard/ManageDonations/ManageDonations";
 import FeatureDonations from "../Pages/Dashboard/FeatureDonations/FeatureDonations";
+import Payment from "../Pages/Dashboard/Payment/Payment";
 
 
 export const router = createBrowserRouter([
@@ -57,6 +58,10 @@ export const router = createBrowserRouter([
       <DashBoardLayout></DashBoardLayout>
     </PrivateRoutes>,
     children:[
+      {
+        path:'payment/:reqId',
+        Component: Payment 
+      },
       {
         path:'manageusers',
         Component:ManageUsers
