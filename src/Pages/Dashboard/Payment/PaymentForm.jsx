@@ -4,14 +4,12 @@ import { useState } from 'react';
 import { useParams } from 'react-router';
 import { useQuery } from '@tanstack/react-query'
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
-import useAuth from '../../../hooks/useAuth';
+import { toast } from 'react-toastify';
 
 const PaymentForm = () => {
     const stripe = useStripe();
     const elements = useElements();
     const { reqId } = useParams();
-    const [request, setRequest] = useState(null);
-    const [loading, setLoading] = useState(true);
 
     console.log(reqId);
     const [error, setError] = useState('');
@@ -78,7 +76,7 @@ const PaymentForm = () => {
                 card: elements.getElement(CardElement),
                 billing_details: {
                     name: reqInfo.name,
-                    email:reqInfo.email
+                    email: reqInfo.email
                 },
             },
         });
@@ -90,6 +88,19 @@ const PaymentForm = () => {
             if (result.paymentIntent.status === 'succeeded') {
                 console.log('PAyment Succeeded');
                 console.log(result);
+                const paymentInfo = {
+                    reqId,
+                    transactionId: result.paymentIntent.id,
+                    amount: amountInCents / 100, // in dollars
+                    email: reqInfo.email,
+                };
+                try {
+                    await axiosSecure.post("/api/payments", paymentInfo);
+                    toast.success("Payment successful & recorded!");
+                } catch (err) {
+                    console.error("Error saving payment:", err);
+                    toast.error("Payment succeeded but failed to save record");
+                }
             }
         }
 
