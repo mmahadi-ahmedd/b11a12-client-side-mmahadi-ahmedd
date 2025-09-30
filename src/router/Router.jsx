@@ -25,6 +25,7 @@ import RequestedDonations from "../Pages/Dashboard/RequestedDonations/RequestedD
 import UserProfile from "../Pages/Dashboard/UserProfile/UserProfile";
 import Favourites from "../Pages/Dashboard/Favourites/Favourites";
 import MyReviews from "../Pages/Dashboard/MyReviews/MyReviews";
+import MyRequests from "../Pages/Dashboard/MyRequestes/MyRequests";
 
 
 export const router = createBrowserRouter([
@@ -136,6 +137,10 @@ export const router = createBrowserRouter([
       {
         path:'myReviews',
         Component:MyReviews
+      },
+      {
+        path:'myRequests',
+        Component:MyRequests
       },
     ]
     
