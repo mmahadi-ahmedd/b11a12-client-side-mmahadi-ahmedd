@@ -60,7 +60,6 @@ const DonationsDetails = () => {
 
   // ✅ Add to favorites
   const handleFavorite = async () => {
-    
     if (!user) return toast.error("Please login to add favorites");
 
     try {
