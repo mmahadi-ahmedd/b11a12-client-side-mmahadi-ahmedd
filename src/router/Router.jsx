@@ -22,6 +22,9 @@ import TransactionHistory from "../Pages/Dashboard/TransactionHistory/Transactio
 import AllDonations from "../Pages/AllDonations/AllDonations";
 import DonationsDetails from "../Pages/DonationDetails/DonationsDetails";
 import RequestedDonations from "../Pages/Dashboard/RequestedDonations/RequestedDonations";
+import UserProfile from "../Pages/Dashboard/UserProfile/UserProfile";
+import Favourites from "../Pages/Dashboard/Favourites/Favourites";
+import MyReviews from "../Pages/Dashboard/MyReviews/MyReviews";
 
 
 export const router = createBrowserRouter([
@@ -121,7 +124,19 @@ export const router = createBrowserRouter([
       {
         path: 'charityRequests',
         Component:CharityRequests 
-      }
+      },
+      {
+        path:'userProfile',
+        Component: UserProfile
+      },
+      {
+        path:'favourites',
+        Component:Favourites
+      },
+      {
+        path:'myReviews',
+        Component:MyReviews
+      },
     ]
     
   }

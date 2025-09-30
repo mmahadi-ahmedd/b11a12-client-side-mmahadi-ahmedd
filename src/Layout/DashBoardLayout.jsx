@@ -38,12 +38,15 @@ const DashBoardLayout = () => {
                     {/* Sidebar content here */}
                     <li><a>Home</a></li>
                     <li><NavLink to="/dashboard/restaurentProfile" >Restaurent Profile</NavLink></li>
+                    <li><NavLink to="/dashboard/userProfile" >User Profile</NavLink></li>
                     <li><NavLink to="/dashboard/charityprofile" >Charity Profile</NavLink></li>
                     <li><NavLink to="/dashboard/adminProfile" >Admin Profile</NavLink></li>
+                    <li><NavLink to="/dashboard/favourites" >Favourites</NavLink></li>
                     <li><NavLink to="/dashboard/manageusers" >Manage Users</NavLink></li>
                     <li><NavLink to="/dashboard/charityRequests" >Manage Roll Requests</NavLink></li>
                     <li><NavLink to="/dashboard/addDonation" >Add Donations</NavLink></li>
                     <li><NavLink to="/dashboard/myDonation" >My Donations</NavLink></li>
+                    <li><NavLink to="/dashboard/myReviews" >My Reviews</NavLink></li>
                     <li><NavLink to="/dashboard/requestedDonations" >Requested Donations</NavLink></li>
                     <li><NavLink to="/dashboard/manageDonations" >Manage Donations</NavLink></li>
                     <li><NavLink to="/dashboard/featureDonations" >Feature Donations</NavLink></li>
