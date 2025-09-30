@@ -1,7 +1,13 @@
 import React from 'react';
 import { NavLink, Outlet } from 'react-router';
+import useUserRole from '../hooks/useUserRole';
 
 const DashBoardLayout = () => {
+
+    const { role, roleLoading } = useUserRole();
+    console.log(role);
+
+
     return (
         <div className="drawer lg:drawer-open">
             <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
@@ -26,7 +32,7 @@ const DashBoardLayout = () => {
                         </label>
                     </div>
                     <div className="mx-2 flex-1 px-2 lg:hidden ">Dashboard</div>
-                    
+
                 </div>
                 {/* Page content here */}
                 <Outlet></Outlet>
@@ -36,22 +42,46 @@ const DashBoardLayout = () => {
                 <label htmlFor="my-drawer-2" aria-label="close sidebar" className="drawer-overlay"></label>
                 <ul className="menu bg-base-200 text-base-content min-h-full w-80 p-4">
                     {/* Sidebar content here */}
-                    <li><a>Home</a></li>
-                    <li><NavLink to="/dashboard/restaurentProfile" >Restaurent Profile</NavLink></li>
-                    <li><NavLink to="/dashboard/userProfile" >User Profile</NavLink></li>
-                    <li><NavLink to="/dashboard/charityprofile" >Charity Profile</NavLink></li>
-                    <li><NavLink to="/dashboard/adminProfile" >Admin Profile</NavLink></li>
-                    <li><NavLink to="/dashboard/favourites" >Favourites</NavLink></li>
-                    <li><NavLink to="/dashboard/manageusers" >Manage Users</NavLink></li>
-                    <li><NavLink to="/dashboard/charityRequests" >Manage Roll Requests</NavLink></li>
-                    <li><NavLink to="/dashboard/addDonation" >Add Donations</NavLink></li>
-                    <li><NavLink to="/dashboard/myDonation" >My Donations</NavLink></li>
-                    <li><NavLink to="/dashboard/myReviews" >My Reviews</NavLink></li>
-                    <li><NavLink to="/dashboard/myRequests" >My Requests</NavLink></li>
-                    <li><NavLink to="/dashboard/requestedDonations" >Requested Donations</NavLink></li>
-                    <li><NavLink to="/dashboard/manageDonations" >Manage Donations</NavLink></li>
-                    <li><NavLink to="/dashboard/featureDonations" >Feature Donations</NavLink></li>
-                    <li><NavLink to="/dashboard/transaction/reqId" >Transaction History </NavLink></li>
+                    {!roleLoading && role === 'Restaurant' &&
+                        <>
+                            <li><NavLink to="/dashboard/restaurentProfile" >Restaurent Profile</NavLink></li>
+                            <li><NavLink to="/dashboard/addDonation" >Add Donations</NavLink></li>
+                            <li><NavLink to="/dashboard/myDonation" >My Donations</NavLink></li>
+                            <li><NavLink to="/dashboard/requestedDonations" >Requested Donations</NavLink></li>
+                        </>
+                    }
+                    {!roleLoading && role === 'user' &&
+                        <>
+                            <li><NavLink to="/dashboard/userProfile" >User Profile</NavLink></li>
+                            <li><NavLink to="/dashboard/favourites" >Favourites</NavLink></li>
+                            <li><NavLink to="/dashboard/myReviews" >My Reviews</NavLink></li>
+                            <li><NavLink to="/dashboard/transaction/reqId" >Transaction History </NavLink></li>
+                        </>
+                    }
+                    {!roleLoading && role === 'Charity' &&
+                        <>
+                            <li><NavLink to="/dashboard/charityprofile" >Charity Profile</NavLink></li>
+                            <li><NavLink to="/dashboard/myRequests" >My Requests</NavLink></li>
+                            <li><NavLink to="/dashboard/myPickups" >My Pickups</NavLink></li>
+                            <li><NavLink to="/dashboard/receievedDonations" >Received Donations </NavLink></li>
+                            <li><NavLink to="/dashboard/transaction/reqId" >Transaction History </NavLink></li>
+
+                        </>
+                    }
+                    {!roleLoading && role === 'Admin' &&
+                        <>
+                            <li><NavLink to="/dashboard/adminProfile" >Admin Profile</NavLink></li>
+                            <li><NavLink to="/dashboard/manageusers" >Manage Users</NavLink></li>
+                            <li><NavLink to="/dashboard/charityRequests" >Manage Roll Requests</NavLink></li>
+                            <li><NavLink to="/dashboard/manageDonations" >Manage Donations</NavLink></li>
+                            <li><NavLink to="/dashboard/manageRequests" >Manage Requests</NavLink></li>
+                            <li><NavLink to="/dashboard/featureDonations" >Feature Donations</NavLink></li>
+                        </>
+                    }
+
+
+
+
                 </ul>
             </div>
         </div>
