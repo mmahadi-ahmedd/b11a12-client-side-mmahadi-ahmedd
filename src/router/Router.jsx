@@ -20,6 +20,8 @@ import FeatureDonations from "../Pages/Dashboard/FeatureDonations/FeatureDonatio
 import Payment from "../Pages/Dashboard/Payment/Payment";
 import TransactionHistory from "../Pages/Dashboard/TransactionHistory/TransactionHistory";
 import AllDonations from "../Pages/AllDonations/AllDonations";
+import DonationsDetails from "../Pages/DonationDetails/DonationsDetails";
+import RequestedDonations from "../Pages/Dashboard/RequestedDonations/RequestedDonations";
 
 
 export const router = createBrowserRouter([
@@ -41,6 +43,12 @@ export const router = createBrowserRouter([
           path:'/allDonations',
           element:<PrivateRoutes>
             <AllDonations></AllDonations>
+          </PrivateRoutes>
+        },
+        {
+          path:'/donations/:id',
+          element:<PrivateRoutes>
+            <DonationsDetails></DonationsDetails>
           </PrivateRoutes>
         },
     ],
@@ -93,6 +101,10 @@ export const router = createBrowserRouter([
       {
         path:'myDonation',
         Component:MyDonations
+      },
+      {
+        path:'requestedDonations',
+        Component:RequestedDonations
       },
       {
         path:'manageDonations',

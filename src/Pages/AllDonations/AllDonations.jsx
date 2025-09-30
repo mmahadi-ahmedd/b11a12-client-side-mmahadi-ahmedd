@@ -26,6 +26,8 @@ const AllDonations = () => {
         fetchVerifiedDonations();
     }, []);
 
+    console.log(donations);
+
     if (loading) return <p className="text-center mt-10">Loading donations...</p>;
 
     return (
@@ -60,7 +62,7 @@ const AllDonations = () => {
                                 <span className="font-semibold">Quantity:</span> {donation.quantity} {donation.unit || "kg"}
                             </p>
                             <Link
-                                to={`/donation/${donation._id}`}
+                                to={`/donations/${donation._id}`}
                                 className="mt-auto bg-blue-500 text-white text-center py-2 px-4 rounded hover:bg-blue-600 transition mt-4"
                             >
                                 View Details
