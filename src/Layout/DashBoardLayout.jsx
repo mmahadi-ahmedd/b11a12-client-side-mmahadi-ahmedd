@@ -46,6 +46,7 @@ const DashBoardLayout = () => {
                     <li><NavLink to="/dashboard/myDonation" >My Donations</NavLink></li>
                     <li><NavLink to="/dashboard/manageDonations" >Manage Donations</NavLink></li>
                     <li><NavLink to="/dashboard/featureDonations" >Feature Donations</NavLink></li>
+                    <li><NavLink to="/dashboard/transaction/reqId" >Transaction History </NavLink></li>
                 </ul>
             </div>
         </div>

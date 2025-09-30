@@ -18,6 +18,8 @@ import MyDonations from "../Pages/Dashboard/MyDonations/MyDonations";
 import ManageDonations from "../Pages/Dashboard/ManageDonations/ManageDonations";
 import FeatureDonations from "../Pages/Dashboard/FeatureDonations/FeatureDonations";
 import Payment from "../Pages/Dashboard/Payment/Payment";
+import TransactionHistory from "../Pages/Dashboard/TransactionHistory/TransactionHistory";
+import AllDonations from "../Pages/AllDonations/AllDonations";
 
 
 export const router = createBrowserRouter([
@@ -34,7 +36,13 @@ export const router = createBrowserRouter([
           element:<PrivateRoutes>
             <BeCharity></BeCharity>
           </PrivateRoutes>
-        }
+        },
+        {
+          path:'/allDonations',
+          element:<PrivateRoutes>
+            <AllDonations></AllDonations>
+          </PrivateRoutes>
+        },
     ],
   },
   {
@@ -61,6 +69,10 @@ export const router = createBrowserRouter([
       {
         path:'payment/:reqId',
         Component: Payment 
+      },
+      {
+        path:'transaction/reqId',
+        Component:TransactionHistory
       },
       {
         path:'manageusers',
